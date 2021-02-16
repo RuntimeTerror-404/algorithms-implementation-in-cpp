@@ -33,22 +33,34 @@ Node* insert(Node* root, int value){
     return root;
 }
 
-// program of traverse the tree in level order traversal
-void levelOrder(Node* root){
-    if(root == NULL){
-        return;
-    }
-    queue<Node*> q;
-    q.push(root);
-    while(!q.empty()){
-        Node* current = q.front();
-        cout<<current->data<<" ";
-        if(current->left != NULL) q.push(current->left);
-        if(current->right != NULL) q.push(current->right);
-        q.pop();
+// program of traverse the tree in pre order traversal
+// root -> left Node -> rigth Node
+void PreOrder(Node* root){
+    if(root == NULL) return;
+    else{
+        cout<<root->data<<" ";
+        PreOrder(root->left);
+        PreOrder(root->right);
     }
 }
 
+// program of traverse the tree in in order traversal
+// left -> root -> right
+void InOrder(Node* root){
+    if(root == NULL) return;
+    InOrder(root->left);
+    cout<<root->data<<" ";
+    InOrder(root->right);
+}
+
+// program to traverse the tree in post order traversal
+// left -> right -> root
+void PostOrder(Node* root){
+    if(root == NULL) return;
+    PostOrder(root->left);
+    PostOrder(root->right);
+    cout<<root->data<<" ";
+}
 
 int main(){
     Node* root = NULL;
@@ -58,6 +70,11 @@ int main(){
     root = insert(root, 15);
     root = insert(root, 10);
     root = insert(root, 18);
-    levelOrder(root);
-    
+    // levelOrder(root);
+    PreOrder(root);
+    cout<<endl;
+    cout<<endl;
+    InOrder(root);
+    cout<<endl<<endl;
+    PostOrder(root);
 }

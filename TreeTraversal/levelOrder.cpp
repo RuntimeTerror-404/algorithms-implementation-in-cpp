@@ -58,6 +58,9 @@ int main(){
     root = insert(root, 15);
     root = insert(root, 10);
     root = insert(root, 18);
+    root = insert(root, 28);
+    root = insert(root, 14);
+
     levelOrder(root);
     
 }
